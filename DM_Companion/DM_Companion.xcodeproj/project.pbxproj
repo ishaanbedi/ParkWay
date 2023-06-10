@@ -12,6 +12,7 @@
 		2E31F4392A34C83400ACAA87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E31F4382A34C83400ACAA87 /* Assets.xcassets */; };
 		2E31F43C2A34C83400ACAA87 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E31F43B2A34C83400ACAA87 /* Preview Assets.xcassets */; };
 		2E31F43E2A34C83400ACAA87 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E31F43D2A34C83400ACAA87 /* Item.swift */; };
+		2ED259F12A34D12B005691FD /* StationsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED259F02A34D12B005691FD /* StationsData.swift */; };
 		337400652A34CA0400A4B9A7 /* NewFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337400642A34CA0400A4B9A7 /* NewFile.swift */; };
 /* End PBXBuildFile section */
 
@@ -22,6 +23,7 @@
 		2E31F4382A34C83400ACAA87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E31F43B2A34C83400ACAA87 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2E31F43D2A34C83400ACAA87 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		2ED259F02A34D12B005691FD /* StationsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsData.swift; sourceTree = "<group>"; };
 		337400642A34CA0400A4B9A7 /* NewFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +80,7 @@
 		2ED259EF2A34D0A5005691FD /* ishaan_files */ = {
 			isa = PBXGroup;
 			children = (
+				2ED259F02A34D12B005691FD /* StationsData.swift */,
 			);
 			path = ishaan_files;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 				2E31F43E2A34C83400ACAA87 /* Item.swift in Sources */,
 				337400652A34CA0400A4B9A7 /* NewFile.swift in Sources */,
 				2E31F4352A34C83100ACAA87 /* DM_CompanionApp.swift in Sources */,
+				2ED259F12A34D12B005691FD /* StationsData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
