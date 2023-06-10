@@ -55,6 +55,7 @@
 		2E31F4332A34C83100ACAA87 /* DM_Companion */ = {
 			isa = PBXGroup;
 			children = (
+				2ED259EF2A34D0A5005691FD /* ishaan_files */,
 				337400662A34CE4700A4B9A7 /* Dishant */,
 				2E31F4342A34C83100ACAA87 /* DM_CompanionApp.swift */,
 				2E31F4362A34C83100ACAA87 /* ContentView.swift */,
@@ -72,6 +73,13 @@
 				2E31F43B2A34C83400ACAA87 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2ED259EF2A34D0A5005691FD /* ishaan_files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ishaan_files;
 			sourceTree = "<group>";
 		};
 		337400662A34CE4700A4B9A7 /* Dishant */ = {
