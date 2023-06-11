@@ -6,9 +6,11 @@ struct LocationDetailView: View {
     @EnvironmentObject private var vm: LocationsViewModel
     @State private var isSaveButtonDisabled = false
     @State private var saveButtonText = "Save as favorite"
+    @State private var showingAlert = false
+    @State private var note = ""
     @Environment(\.modelContext) private var context
     @Query(sort: \SavedLocationSDModel.name, order: .forward, animation: .spring) var savedLocations: [SavedLocationSDModel]
-    @State private var position : MapCameraPosition = .automatic
+    @State private var position: MapCameraPosition = .automatic
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -46,16 +48,16 @@ struct LocationDetailView: View {
                 }
                     .padding(.all)
 
-                Map(position:$position){
-                    Annotation("",coordinate: location.coordinates){
+                Map(position: $position) {
+                    Annotation("", coordinate: location.coordinates) {
                         LocationMapAnnotationView()
                             .shadow(radius: 10)
                     }
                 }
-                .onAppear{
+                    .onAppear {
 //                    position = .region(locationRegionLocal)
                     position = .camera(
-                        MapCamera(centerCoordinate: location.coordinates, distance: 980,heading: 242,pitch: 60))
+                        MapCamera(centerCoordinate: location.coordinates, distance: 980, heading: 242, pitch: 60))
                 }
 
                     .allowsHitTesting(false)
@@ -69,7 +71,8 @@ struct LocationDetailView: View {
 //                        for i in 0...savedLocations.count - 1 {
 //                            context.delete(savedLocations[i])
 //                        }
-                        saveButtonAction()
+//                        saveButtonAction()
+                        showingAlert.toggle()
                     } label: {
                         Text("Save as Favorite Location")
                             .padding(.all)
@@ -79,8 +82,15 @@ struct LocationDetailView: View {
                             .cornerRadius(10)
                     }
                         .padding(.all)
-                    
-                    
+                        .alert("Add a note", isPresented: $showingAlert) {
+                        TextField("Great place...:", text: $note)
+                        Button("Submit") {
+                            saveButtonAction()
+                        }
+                    } message: {
+                        Text("How do you feel about \(location.name)")
+                    }
+
                 }
                     .padding(.all)
             }
@@ -104,7 +114,7 @@ struct LocationDetailView: View {
     }
 
     private func saveButtonAction() {
-        let locationToSave = SavedLocationSDModel(name: location.name, descriptionText: location.descriptionText, imageNames: location.imageNames)
+        let locationToSave = SavedLocationSDModel(name: location.name, descriptionText: location.descriptionText, imageNames: location.imageNames, notes: note)
         for i in savedLocations {
             if (i.name == locationToSave.name) {
                 return
