@@ -10,7 +10,7 @@ class LocationsDataService {
             imageNames: ["jobs-theater-1", "jobs-theater-2", "jobs-theater-3"]
         ),
         Location(
-            name: "Apple Park Visitor Center",
+            name: "Visitor Center",
             coordinates: CLLocationCoordinate2D(latitude: 37.3328, longitude: -122.0054),
             descriptionText: "The Apple Park Visitor Center is a public visitor center at Apple Park, featuring an Apple Store, a café, and exhibition space showcasing Apple products and designs. Visitors can explore the state-of-the-art facility and learn more about Apple's innovative work.",
             imageNames: ["visitor-center-1", "visitor-center-2", "visitor-center-3"]

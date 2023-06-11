@@ -43,6 +43,8 @@ struct LocationsView: View {
                                 .bold()
                                 .frame(height: 55)
                                 .frame(maxWidth: .infinity)
+                                .padding(.all)
+                                .padding(.leading)
                                 .overlay(alignment: .leading) {
                                     Image(systemName: vm.showLocationsList ? "xmark" : "line.3.horizontal")
                                         .font(.headline)
@@ -74,12 +76,12 @@ struct LocationsView: View {
                         Image(systemName: "magnifyingglass")
                             .font(.headline)
                             .foregroundColor(.primary)
-                            .padding([.trailing,.bottom,.top])
+                            .padding([.bottom,.top,.trailing])
                     }
 
                     }
                         if (vm.showLocationsList) {
-                            LocationsListView()
+                            LocationsListView(position:$position)
                         }
                     
                 }
