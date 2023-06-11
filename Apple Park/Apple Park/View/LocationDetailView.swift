@@ -8,6 +8,7 @@ struct LocationDetailView: View {
     @State private var saveButtonText = "Save as favorite"
     @Environment(\.modelContext) private var context
     @Query(sort: \SavedLocationSDModel.name, order: .forward, animation: .spring) var savedLocations: [SavedLocationSDModel]
+    @State private var position : MapCameraPosition = .automatic
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -45,21 +46,24 @@ struct LocationDetailView: View {
                 }
                     .padding(.all)
 
-                Map(coordinateRegion: .constant(MKCoordinateRegion(
-                    center: location.coordinates,
-                    span: MKCoordinateSpan(latitudeDelta: 0.0075, longitudeDelta: 0.0075))),
-                    annotationItems: [location]) { location in
-                    MapAnnotation (coordinate: location.coordinates) {
+                Map(position:$position){
+                    Annotation("",coordinate: location.coordinates){
                         LocationMapAnnotationView()
-                            .shadow (radius: 10)
+                            .shadow(radius: 10)
                     }
                 }
+                .onAppear{
+//                    position = .region(locationRegionLocal)
+                    position = .camera(
+                        MapCamera(centerCoordinate: location.coordinates, distance: 980,heading: 242,pitch: 60))
+                }
+
                     .allowsHitTesting(false)
                     .aspectRatio(2, contentMode: .fit)
                     .cornerRadius(30)
                     .padding(.all)
 
-                VStack {
+                HStack {
 
                     Button {
 //                        for i in 0...savedLocations.count - 1 {
@@ -75,6 +79,8 @@ struct LocationDetailView: View {
                             .cornerRadius(10)
                     }
                         .padding(.all)
+                    
+                    
                 }
                     .padding(.all)
             }

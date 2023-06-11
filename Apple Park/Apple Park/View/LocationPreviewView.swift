@@ -1,5 +1,7 @@
 import SwiftUI
 import SwiftData
+import MapKit
+
 struct LocationPreviewView: View {
     let location: Location
     @EnvironmentObject private var vm: LocationsViewModel
@@ -7,6 +9,7 @@ struct LocationPreviewView: View {
     @State private var saveButtonText = "Save"
     @Environment(\.modelContext) private var context
     @Query(sort: \SavedLocationSDModel.name, order: .forward, animation: .spring) var savedLocations: [SavedLocationSDModel]
+    @Binding var position : MapCameraPosition
     var body: some View {
         VStack {
             VStack {
@@ -36,6 +39,9 @@ struct LocationPreviewView: View {
 
             Button {
                 vm.sheetLocation = location
+                withAnimation(){
+                    position = .region(MKCoordinateRegion(center: location.coordinates, span: MKCoordinateSpan(latitudeDelta: 0.0075, longitudeDelta: 0.0075)))
+                }
             } label: {
                 Text("Know More")
                     .font(.headline)
@@ -47,6 +53,9 @@ struct LocationPreviewView: View {
             HStack {
                 Button {
                     vm.nextButtonPressed()
+                    withAnimation(){
+                        position = .region(MKCoordinateRegion(center: location.coordinates, span: MKCoordinateSpan(latitudeDelta: 0.0075, longitudeDelta: 0.0075)))
+                    }
                 } label: {
                     Text("Next")
                         .font(.headline)
