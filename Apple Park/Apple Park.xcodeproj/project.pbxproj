@@ -10,7 +10,7 @@
 		2EB094952A34D45F00A0241C /* Apple_ParkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB094942A34D45F00A0241C /* Apple_ParkApp.swift */; };
 		2EB094992A34D46000A0241C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EB094982A34D46000A0241C /* Assets.xcassets */; };
 		2EB0949C2A34D46000A0241C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EB0949B2A34D46000A0241C /* Preview Assets.xcassets */; };
-		2EB0949E2A34D46000A0241C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB0949D2A34D46000A0241C /* Item.swift */; };
+		2EB0949E2A34D46000A0241C /* SavedLocationSDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB0949D2A34D46000A0241C /* SavedLocationSDModel.swift */; };
 		2EB094A62A34D4EE00A0241C /* LocationDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB094A52A34D4EE00A0241C /* LocationDataService.swift */; };
 		2EB094A92A34D52C00A0241C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB094A82A34D52C00A0241C /* Location.swift */; };
 		2EB094AC2A34D54A00A0241C /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB094AB2A34D54A00A0241C /* LocationViewModel.swift */; };
@@ -26,7 +26,7 @@
 		2EB094942A34D45F00A0241C /* Apple_ParkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple_ParkApp.swift; sourceTree = "<group>"; };
 		2EB094982A34D46000A0241C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2EB0949B2A34D46000A0241C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		2EB0949D2A34D46000A0241C /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		2EB0949D2A34D46000A0241C /* SavedLocationSDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationSDModel.swift; sourceTree = "<group>"; };
 		2EB094A52A34D4EE00A0241C /* LocationDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataService.swift; sourceTree = "<group>"; };
 		2EB094A82A34D52C00A0241C /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		2EB094AB2A34D54A00A0241C /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
@@ -73,7 +73,6 @@
 				2EB094A72A34D52700A0241C /* Model */,
 				2EB094A42A34D4DA00A0241C /* DataService */,
 				2EB094982A34D46000A0241C /* Assets.xcassets */,
-				2EB0949D2A34D46000A0241C /* Item.swift */,
 				2EB0949A2A34D46000A0241C /* Preview Content */,
 			);
 			path = "Apple Park";
@@ -98,6 +97,7 @@
 		2EB094A72A34D52700A0241C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2EB0949D2A34D46000A0241C /* SavedLocationSDModel.swift */,
 				2EB094A82A34D52C00A0241C /* Location.swift */,
 			);
 			path = Model;
@@ -200,7 +200,7 @@
 				2EB094B52A34D6CB00A0241C /* LocationsListView.swift in Sources */,
 				2EB094A92A34D52C00A0241C /* Location.swift in Sources */,
 				2EB094B72A34D6ED00A0241C /* LocationsView.swift in Sources */,
-				2EB0949E2A34D46000A0241C /* Item.swift in Sources */,
+				2EB0949E2A34D46000A0241C /* SavedLocationSDModel.swift in Sources */,
 				2EB094952A34D45F00A0241C /* Apple_ParkApp.swift in Sources */,
 				2EB094B12A34D69F00A0241C /* LocationMapAnnotationView.swift in Sources */,
 			);

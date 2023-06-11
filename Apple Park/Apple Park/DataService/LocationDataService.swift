@@ -22,7 +22,7 @@ class LocationsDataService {
             imageNames: ["apple-park-1", "apple-park-2", "apple-park-3"]
         ),
         Location(
-            name: "Apple Park Wellness Center",
+            name: "Wellness Center",
             coordinates: CLLocationCoordinate2D(latitude: 37.3329, longitude: -122.0055),
             descriptionText: "The Apple Park Wellness Center is a state-of-the-art facility dedicated to the health and well-being of Apple employees. It offers a variety of fitness amenities, including gyms, swimming pools, yoga studios, and wellness programs. The center promotes a healthy lifestyle and work-life balance.",
             imageNames: ["wellness-center-1", "wellness-center-2", "wellness-center-3"]

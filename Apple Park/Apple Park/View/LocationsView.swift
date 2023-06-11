@@ -1,8 +1,13 @@
 import SwiftUI
 import MapKit
+import SwiftData
 struct LocationsView: View {
     @EnvironmentObject private var vm: LocationsViewModel
     @State private var showDetails: Bool = false
+    @State private var showSavedSheet = false
+    @Environment(\.modelContext) private var context
+    @Query(sort: \SavedLocationSDModel.name, order: .forward, animation: .spring) var savedLocations: [SavedLocationSDModel]
+
     var body: some View {
         ZStack {
             Map(coordinateRegion: $vm.mapRegion, annotationItems: vm.locations, annotationContent: { location in
@@ -19,7 +24,6 @@ struct LocationsView: View {
             VStack {
                 VStack {
                     Button {
-                        toggleList()
                     } label: {
                         Text("\(vm.mapLocation.name)")
                             .foregroundColor(.primary)
@@ -28,11 +32,25 @@ struct LocationsView: View {
                             .frame(height: 55)
                             .frame(maxWidth: .infinity)
                             .overlay(alignment: .leading) {
-                            Image(systemName: "arrow.down")
+                            Image(systemName: vm.showLocationsList ? "xmark" : "line.3.horizontal")
                                 .font(.headline)
                                 .foregroundColor(.primary)
                                 .padding(.all)
-                                .rotationEffect(Angle(degrees: vm.showLocationsList ? 180 : 0))
+                                .rotationEffect(Angle(degrees: vm.showLocationsList ? 90 : 0))
+                        }
+                            .onTapGesture {
+                            toggleList()
+                        }
+                            .overlay(alignment: .trailing) {
+                            Image(systemName: "heart.fill")
+                                .font(.headline)
+                                .foregroundColor(.primary)
+                                .padding(.all)
+                        }
+                            .onTapGesture {
+                            withAnimation {
+                                showSavedSheet.toggle()
+                            }
                         }
                     }
                     if (vm.showLocationsList) {
@@ -56,23 +74,74 @@ struct LocationsView: View {
                                 .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                         }
                     }
-
                 }
             }
         }
             .sheet(item: $vm.sheetLocation, onDismiss: nil) { location in
             LocationDetailView(location: location)
         }
+            .sheet(isPresented: $showSavedSheet) {
+            VStack {
+                if savedLocations.count == 0 {
+                    Text("You don't have any saved places yet!")
+                } else {
+                    NavigationStack {
+                        List {
+                            ForEach(Array(Set(savedLocations)), id: \.self) { item in
+                                NavigationLink(item.name) {
+                                    Group {
+                                        ScrollView {
+                                            VStack(alignment: .leading) {
+                                                TabView {
+                                                    ForEach(item.imageNames, id: \.self) {
+                                                        Image($0)
+                                                            .resizable()
+                                                            .scaledToFill()
+                                                            .frame(width: UIScreen.main.bounds.width)
+                                                            .clipped()
+                                                    }
+                                                }
+                                                    .frame(height: 500)
+                                                    .tabViewStyle(PageTabViewStyle())
+                                                    .ignoresSafeArea(.all)
+
+                                                VStack(alignment: .center) {
+                                                    Text(item.name)
+                                                        .font(.largeTitle)
+                                                        .fontWeight(.black)
+                                                }
+                                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                                    .padding(.all)
+
+                                                Divider()
+                                                    .padding(.horizontal)
+
+                                                VStack(alignment: .leading) {
+                                                    VStack(alignment: .leading) {
+                                                        Text(item.descriptionText)
+                                                            .font(.subheadline)
+                                                            .foregroundColor(.secondary)
+                                                    }
+                                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                                }
+                                                    .padding(.all)
+                                            }
+                                        }
+                                            .background(.ultraThinMaterial)
+                                            .ignoresSafeArea(.all)
+                                    }
+                                }
+                            }
+                        }
+                            .navigationTitle("Saved Places")
+                    }
+                }
+            }
+        }
     }
     func toggleList() {
         withAnimation(.easeInOut) {
             vm.showLocationsList = !vm.showLocationsList
         }
-    }
-}
-struct LocationsView_Previews: PreviewProvider {
-    static var previews: some View {
-        LocationsView()
-            .environmentObject(LocationsViewModel())
     }
 }

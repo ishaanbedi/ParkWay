@@ -22,7 +22,6 @@ struct LocationsListView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
-
             }
                 .listRowBackground(Color.clear)
         }

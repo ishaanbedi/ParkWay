@@ -3,7 +3,7 @@ struct LocationMapAnnotationView: View {
     let accentColor: Color = .accentColor
     var body: some View {
         VStack(spacing: 0) {
-            Image(systemName: "map.circle.fill")
+            Image(systemName: "mappin.circle.fill")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 30, height: 30)
